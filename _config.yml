@@ -52,3 +52,8 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+# Second brain notes: rendered together on /brain/, no per-note pages
+collections:
+  notes:
+    output: false
