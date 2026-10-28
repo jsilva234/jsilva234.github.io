@@ -1,0 +1,20 @@
+---
+layout: default
+---
+
+<p><a href="{{ '/brain/' | relative_url }}">&larr; Second Brain</a></p>
+
+<h1>{{ page.topic }} / {{ page.subtopic }}</h1>
+
+{% assign notes = site.notes | where: "topic", page.topic | where: "subtopic", page.subtopic %}
+
+<ul>
+  {% for note in notes %}
+    <li><a href="#{{ note.title | slugify }}">{{ note.title }}</a></li>
+  {% endfor %}
+</ul>
+
+{% for note in notes %}
+<h2 id="{{ note.title | slugify }}">{{ note.title }}</h2>
+{{ note.content | markdownify }}
+{% endfor %}
