@@ -11,8 +11,12 @@ rbenv local 3.3.13          # writes .ruby-version in this repo
 
 gem install bundler:2.4.10
 bundle install
+```
 
-bundle exec jekyll serve
+# Run
+
+```bash
+make run                    # same as: bundle exec jekyll serve
 ```
 
 Open http://localhost:4000
