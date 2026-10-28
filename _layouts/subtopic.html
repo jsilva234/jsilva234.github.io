@@ -1,10 +1,8 @@
 ---
-layout: default
+layout: page
 ---
 
 <p><a href="{{ '/brain/' | relative_url }}">&larr; Second Brain</a></p>
-
-<h1>{{ page.topic }} / {{ page.subtopic }}</h1>
 
 {% assign notes = site.notes | where: "topic", page.topic | where: "subtopic", page.subtopic %}
 
