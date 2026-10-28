@@ -1,7 +1,7 @@
 ---
 title: Second Brain
 icon: fas fa-brain
-order: 5
+order: 2
 permalink: /brain/
 ---
 
