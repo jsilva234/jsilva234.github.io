@@ -4,7 +4,7 @@ layout: page
 
 <p><a href="{{ '/brain/' | relative_url }}">&larr; Second Brain</a></p>
 
-{% assign notes = site.notes | where: "topic", page.topic | where: "subtopic", page.subtopic %}
+{% assign notes = site.notes | where: "topic", page.topic | where: "subtopic", page.subtopic | sort: "order" %}
 
 <ul>
   {% for note in notes %}
