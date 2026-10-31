@@ -5,21 +5,43 @@ subtopic: Rust
 order: 2
 ---
 
-A reference (`&T`, `&mut T`) is a pointer to a value, checked by the compiler. Compared to a C pointer:
+A reference (`&T`, `&mut T`) is a pointer with rules the compiler checks:
 
-- It is never null. Use `Option<&T>` for "maybe nothing".
-- It is never dangling. The compiler proves the value outlives the reference.
-- Either one `&mut T` or any number of `&T` exist at a time, never both.
-- There is no pointer arithmetic.
+- never null (`Option<&T>` for "maybe nothing")
+- never dangling
+- no pointer arithmetic
+- one `&mut`, or any number of `&`, never both
 
-Use `r` for the reference itself and `*r` for the value behind it. Rust adds the `*` for you in method calls, field access and printing.
+Same two operations as a pointer, but following it is safe.
 
 ```rust
 let mut x = 5;
-let r = &mut x;
-*r += 1;                 // writing through a reference needs *
-println!("{}", r);       // 6, Display follows the reference
-println!("{:p}", r);     // the address stored in r
+
+let r = &mut x;      // take the address
+*r += 1;             // follow it, write
+let y = *r;          // follow it, read (Copy types only)
+
+assert!(x == 6 && y == 6);
 ```
 
-An explicit `*` is needed to write through `&mut`, to compare with a plain value (`*r == 5`), and to copy a value out (`let y = *r;`, only for `Copy` types).
+Same address check:
+
+```rust
+let a = 5;
+let r1 = &a;
+let r2 = &a;
+
+assert!(std::ptr::eq(r1, r2));   // same address
+assert!(r1 == r2);               // compares the values behind, not the addresses
+```
+
+The rules in action:
+
+```rust
+let mut s = String::from("hi");
+
+let r1 = &s;
+let r2 = &s;             // many & is fine
+// let m = &mut s;       // error: r1, r2 still alive
+assert!(r1.len() == r2.len());
+```
