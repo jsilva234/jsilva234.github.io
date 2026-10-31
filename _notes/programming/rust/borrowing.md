@@ -44,3 +44,19 @@ fn main() {
     println!("{r1} {r2}");
 }
 ```
+
+A borrow lasts from where the reference is created to its last use, not to the end of the scope. The owner can move only when no reference to it is used later.
+
+```rust
+let s = String::from("hi");
+let b = &s;
+println!("{}", b);  // last use of b: the borrow ends here
+let c = s;          // OK
+```
+
+```rust
+let s = String::from("hi");
+let b = &s;
+let c = s;          // error: cannot move out of `s` because it is borrowed
+println!("{}", b);  // b is used after the move
+```
