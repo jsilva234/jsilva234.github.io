@@ -31,3 +31,13 @@ unsafe { // unsafe only unlocks *p, validity is on the developer
     println!("{}", d);
 }
 ```
+
+`&mut` is not the only way to write through a pointer. A raw `*mut` pointer can write too, but only inside `unsafe`.
+
+```rust
+let mut x = 5;
+let p = &mut x as *mut i32;   // raw pointer that can write
+
+unsafe { *p = 6; }            // writing needs unsafe
+assert!(x == 6);
+```

@@ -5,23 +5,22 @@ subtopic: Rust
 order: 2
 ---
 
+Rust borrow checker (compiler) validates references:
 A reference (`&T`, `&mut T`) is a pointer with rules the compiler checks:
 
 - never null (`Option<&T>` for "maybe nothing")
 - never dangling
 - no pointer arithmetic
-- one `&mut`, or any number of `&`, never both
-
-Same two operations as a pointer, but following it is safe.
+- only one `&mut` is allowed, or any number of `&`, never both
 
 ```rust
 let mut x = 5;
 
 let r = &mut x;      // take the address
-*r += 1;             // follow it, write
 let y = *r;          // follow it, read (Copy types only)
+*r += 1;             // updates r, leaves y alone
 
-assert!(x == 6 && y == 6);
+assert!(x == 6 && y == 5);
 ```
 
 Same address check:
@@ -32,7 +31,6 @@ let r1 = &a;
 let r2 = &a;
 
 assert!(std::ptr::eq(r1, r2));   // same address
-assert!(r1 == r2);               // compares the values behind, not the addresses
 ```
 
 The rules in action:
