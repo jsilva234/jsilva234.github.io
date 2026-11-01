@@ -27,6 +27,8 @@ assert!(*xp == 6);
 These rules are contextual and depend on usages forward in the code. 
 A usage invalidates every existing reference that is used after it, including references of references.
 
+NOTE: the compiler reports these errors on the owner (`x` is "borrowed"), not on the reference.
+
 A shared reference used after a `&mut` is created:
 
 ```rust
@@ -100,4 +102,17 @@ let mut x = 5;
 let r = &mut x;
 *r += 1;                  // last use of r, the borrow ends here
 x += 1;                   // OK
+```
+
+Reading borrow checker errors: the message is about the owner, described as borrowed. The reference only appears in the labels below it.
+
+```
+error: cannot use `x` because it was mutably borrowed
+error: cannot assign to `x` because it is borrowed
+error: cannot move out of `s` because it is borrowed
+```
+
+```
+let r = &mut x;   <- borrow of `x` occurs here
+*r += 1;          <- borrow later used here
 ```
