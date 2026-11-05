@@ -5,6 +5,17 @@ subtopic: Rust
 order: 2
 ---
 
+Not every line of code ends with `;`:
+
+```rust
+fn add(a: i32, b: i32) -> i32 {
+    let sum = a + b;   // ends with `;`
+    sum                // no `;`
+}
+```
+
+The difference between these two lines is what this page is about.
+
 An **expression** produces a value:
 
 ```rust
