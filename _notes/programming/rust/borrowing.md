@@ -2,7 +2,7 @@
 title: Borrowing
 topic: Programming
 subtopic: Rust
-order: 5
+order: 6
 ---
 
 A reference lets you use a value without taking ownership of it. Creating one is called borrowing. The borrow checker (the compiler) validates every borrow.

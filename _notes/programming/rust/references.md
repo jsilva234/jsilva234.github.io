@@ -2,7 +2,7 @@
 title: References
 topic: Programming
 subtopic: Rust
-order: 3
+order: 4
 ---
 
 A reference (`&T`, `&mut T`) is a pointer with rules the compiler checks:

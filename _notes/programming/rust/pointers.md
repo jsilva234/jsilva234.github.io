@@ -2,7 +2,7 @@
 title: Pointers
 topic: Programming
 subtopic: Rust
-order: 2
+order: 3
 ---
 
 Pointers work similary to C.
@@ -10,6 +10,6 @@ Pointers work similary to C.
 * `*` for dereference;
 
 Rust changes:
-* `&` is unmutable by default;
-* `&mut` allows mutable operations (if varible is also mutable);
+* `&` references only allow reading (unmutable);
+* `&mut` is required for mutable operations (only if varible is also mutable);
 ```

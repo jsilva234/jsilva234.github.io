@@ -2,7 +2,7 @@
 title: unsafe
 topic: Programming
 subtopic: Rust
-order: 6
+order: 7
 ---
 
 By default all code in Rust is safe. This means the compiler will not allow a variable reference to outlive a variable owner.
