@@ -2,7 +2,7 @@
 title: Ownership
 topic: Programming
 subtopic: Rust
-order: 3
+order: 4
 ---
 
 Three rules:

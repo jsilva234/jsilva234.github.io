@@ -2,7 +2,7 @@
 title: Pointers
 topic: Programming
 subtopic: Rust
-order: 1
+order: 2
 ---
 
 Pointers work similary to C.
