@@ -5,54 +5,45 @@ subtopic: Rust
 order: 2
 ---
 
-Not every line of code ends with `;`:
+Statements and expressions work as in C and JS:
+
+- An **expression** is evaluated and produces a value.
+- A **statement** is executed and produces no value.
+- Statements
 
 ```rust
-fn add(a: i32, b: i32) -> i32 {
-    let sum = a + b;   // ends with `;`
-    sum                // no `;`
-}
+let a = 1 + 2;   // statement; 1 + 2 is an expression, a receives 3
 ```
 
-The difference between these two lines is what this page is about.
+### What Rust adds
 
-An **expression** produces a value:
+Blocks (`{ }`), `if`/`else`, `match` and loops (`loop`, `while`, `for`) are expressions too.
 
 ```rust
-1 + 2          // 3
-{ 1 + 2 }      // 3, a block expression
-if true { 1 } else { 2 }   // 1
+let b = loop { break 1 };           // block, b == 1
+
+let c = if true { 1 } else { 2 };   // if/else, c == 1
+
+{
+    let y = 1
+    println!("{}", y)
+} // y is no longer after this block ends
 ```
 
-A **statement** performs an action and produces no value:
+## Tail expression
 
-```rust
-let x = 1;     // declaration, no value
-```
-
-Because `let` is a statement, it can't be used as a value:
-
-```rust
-// let a = (let b = 1);   // error: expected expression, found `let` statement
-```
-
-The `;` turns an expression into a statement, its value is discarded:
-
-```rust
-1 + 2;         // expression statement, value thrown away
-```
-
-A statement's value is `()`, the unit type:
-
-```rust
-let a = { 1 + 2; };   // a == ()
-```
-
-A block ends with an optional **tail expression** (no `;`), which becomes the block's value:
+The last expression in a block, with no `;`, is the block's value. It is called the **tail expression**:
 
 ```rust
 let n = {
     let a = 2;
-    a * 3          // tail expression, n == 6
+    a * 3 // no ";"
 };
+```
+
+If it ended with `;` it would a statement that dont saves the result and the block evaluates to `unit value`
+
+```rust
+let x = { 1 + 3 };    // x == 4
+let y = { 1 + 3; };   // y == ()
 ```
