@@ -39,7 +39,7 @@ let b: Box<str> = "hi".into(); // str is the type behind the
 
 
 ### `String` vs `&str`
-`&str` is a `str` pointer. It stores `ptr` + `len`. It's immutable.  
+`&str` is a `str` pointer. It stores `ptr` + `len`. Its size is fixed.  
 `String` manages a buffer on the heap and provides an API of allowed behaviors.    
 
 ```rust
@@ -47,7 +47,7 @@ let lit: &str = "hello";                   // borrowed view: ptr + len
 let owned: String = String::from("hello"); // owner: ptr + len + capacity, bytes on the heap
 ```
 
-In practice `&str` allows for reading a `String`. For editions `&String` is required.  
+In practice, `&str` is used to read a `String`. To edit text you need the `String` itself.  
 This is relevant on function signatures and return types.  
 
 ```rust
