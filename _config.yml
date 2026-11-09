@@ -175,7 +175,7 @@ kramdown:
       start_line: 1
 
 collections:
-  notes:
+  second_brain:
     output: false
   tabs:
     output: true
