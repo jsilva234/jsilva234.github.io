@@ -8,17 +8,9 @@ order: 9
 Tehre are 2 kinds of static.
 `static` variables and static lifetimes (`'static`)
 
-```rust
-let r;
-{
-    r = "hello";       // bytes live in the program, not in this block
-}
-println!("{}", r);     // ok
-```
-
 ### `'static`
 
-`'static` is the longest lifetime: the target lives as long as the program runs, so the reference can't [dangle](#dangling-reference).  
+`'static` is the longest lifetime: the target lives as long as the program runs, so the reference can't dangle.  
 It is the one reserved lifetime name, since `static` is a keyword.
 
 ```rust
