@@ -17,4 +17,4 @@ order: 1
 | **Reference** | a pointer that borrows, no cleanup duty | `&T`, `&mut T` |
 | **Smart pointer** | pointer that owns and manages what it points to | `Box<T>`, `String`, `Vec<T>` |
 | **Lifetime** | the span of code during which a reference is valid | `'a`, `'static` |
-| **Dangling reference** | a reference to memory that has already been freed, Rust rejects it at compile time | `r = &x;` after `x` is dropped |
+| **<a id="dangling-reference"></a>Dangling reference** | a reference to memory that has already been freed, Rust rejects it at compile time | `r = &x;` after `x` is dropped |

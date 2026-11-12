@@ -18,7 +18,7 @@ println!("{}", r);     // ok
 
 ### `'static`
 
-`'static` is the longest lifetime: the target lives as long as the program runs, so the reference can't dangle.  
+`'static` is the longest lifetime: the target lives as long as the program runs, so the reference can't [dangle](#dangling-reference).  
 It is the one reserved lifetime name, since `static` is a keyword.
 
 ```rust
