@@ -5,10 +5,10 @@ subtopic: Rust
 order: 4
 ---
 
-A reference (`&T`, `&mut T`) is a pointer with rules the compiler checks:
+A [reference](#reference) (`&T`, `&mut T`) is a pointer with rules the compiler checks:
 
 - never null (`Option<&T>` for "maybe nothing")
-- never dangling
+- never [dangling](#dangling-reference)
 - no pointer arithmetic
 
 ```rust

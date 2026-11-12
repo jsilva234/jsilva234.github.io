@@ -6,12 +6,12 @@ order: 9
 ---
 
 Tehre are 2 kinds of static.
-`static` variables and static lifetimes (`'static`)
+`static` variables and static [lifetimes](#lifetime) (`'static`)
 
 ### `'static`
 
-`'static` is the longest lifetime: the target lives as long as the program runs, so the reference can't dangle.  
-It is the one reserved lifetime name, since `static` is a keyword.
+`'static` is the longest [lifetime](#lifetime): the target lives as long as the program runs, so the [reference](#reference) can't [dangle](#dangling-reference).  
+It is the one reserved [lifetime](#lifetime) name, since `static` is a keyword.
 
 ```rust
 let c: &'static str = "hi";  // a reference that is valid for the whole program

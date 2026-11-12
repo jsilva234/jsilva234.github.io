@@ -41,7 +41,7 @@ The value is dropped when the owner goes out of scope:
 
 Assignment copies the bytes of the variable. What those bytes are decides the behavior.
 
-A **Copy type** is its bytes, so the copy is complete and both variables stay valid:
+A **[Copy type](#copy-type)** is its bytes, so the copy is complete and both variables stay valid:
 
 ```rust
 let a = 5;                    // a's bytes: the value 5
@@ -49,7 +49,7 @@ let b = a;                    // copied, a is still valid
 assert!(a == 5 && b == 5);
 ```
 
-A **smart pointer** owns what it points to. Its bytes are a handle to heap data, so copying them would give two owners of one buffer. Assignment moves instead:
+A **[smart pointer](#smart-pointer)** owns what it points to. Its bytes are a handle to heap data, so copying them would give two owners of one buffer. Assignment moves instead:
 
 ```rust
 let s = String::from("hi");   // s's bytes: (ptr, len, cap), the "hi" lives on the heap

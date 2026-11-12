@@ -5,7 +5,7 @@ subtopic: Rust
 order: 7
 ---
 
-By default all code in Rust is safe. This means the compiler will not allow a variable reference to outlive a variable owner.
+By default all code in Rust is safe. This means the compiler will not allow a variable [reference](#reference) to outlive a variable owner.
 
 ```rust
 let r;

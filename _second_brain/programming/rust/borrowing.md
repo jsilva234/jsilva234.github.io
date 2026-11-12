@@ -5,7 +5,7 @@ subtopic: Rust
 order: 6
 ---
 
-A reference lets you use a value without taking ownership of it. Creating one is called borrowing. The borrow checker (the compiler) validates every borrow.
+A [reference](#reference) lets you use a value without taking ownership of it. Creating one is called borrowing. The borrow checker (the compiler) validates every borrow.
 
 ```rust
 fn len(s: &String) -> usize {
@@ -19,7 +19,7 @@ fn main() {
 }
 ```
 
-A mutable reference allows changing the borrowed value.
+A mutable [reference](#reference) allows changing the borrowed value.
 
 ```rust
 fn shout(s: &mut String) {
@@ -33,7 +33,7 @@ fn main() {
 }
 ```
 
-At any given time, you can have either one mutable reference or any number of shared references, never both. References must always be valid, so Rust rejects dangling ones at compile time.
+At any given time, you can have either one mutable [reference](#reference) or any number of shared [references](#reference), never both. [References](#reference) must always be valid, so Rust rejects [dangling ones](#dangling-reference) at compile time.
 
 ```rust
 fn main() {
@@ -45,11 +45,11 @@ fn main() {
 }
 ```
 
-A borrow lasts from where the reference is created to its last use, not to the end of the scope. These rules are contextual and depend on usages forward in the code. A usage invalidates every existing reference that is used after it, including references of references.
+A borrow lasts from where the [reference](#reference) is created to its last use, not to the end of the scope. These rules are contextual and depend on usages forward in the code. A usage invalidates every existing [reference](#reference) that is used after it, including [references](#reference) of [references](#reference).
 
-NOTE: the compiler reports these errors on the owner (`x` is "borrowed"), not on the reference.
+NOTE: the compiler reports these errors on the owner (`x` is "borrowed"), not on the [reference](#reference).
 
-A shared reference used after a `&mut` is created:
+A shared [reference](#reference) used after a `&mut` is created:
 
 ```rust
 let mut s = String::from("hi");
@@ -72,7 +72,7 @@ let r2 = &mut x;          // second &mut invalidates r1
 *r1 += 1;                 // error: r1 is no longer valid, x was mutably borrowed again
 ```
 
-The owner read while a reference is used later:
+The owner read while a [reference](#reference) is used later:
 
 ```rust
 let mut x = 5;
@@ -82,7 +82,7 @@ let a = x;                // reading x invalidates r
 *r += 1;                  // error: r is no longer valid, x was used above
 ```
 
-The owner written while a reference is used later:
+The owner written while a [reference](#reference) is used later:
 
 ```rust
 let mut x = 5;
@@ -92,7 +92,7 @@ x = 6;                    // writing x invalidates r
 assert!(*r == 5);         // error: r is no longer valid, x was changed above
 ```
 
-The owner moved while a reference is used later:
+The owner moved while a [reference](#reference) is used later:
 
 ```rust
 let s = String::from("hi");
@@ -102,7 +102,7 @@ let t = s;                // moving s invalidates r
 assert!(*r == "hi");      // error: r is no longer valid, s was moved above
 ```
 
-A reference of a reference is invalidated with the first one:
+A [reference](#reference) of a [reference](#reference) is invalidated with the first one:
 
 ```rust
 let mut x = 5;
@@ -113,7 +113,7 @@ x += 1;                   // changing x invalidates r, and rr with it
 assert!(**rr == 5);       // error: rr is no longer valid, x was changed above
 ```
 
-Once the last reference is used, the owner is free again:
+Once the last [reference](#reference) is used, the owner is free again:
 
 ```rust
 let mut x = 5;
@@ -123,7 +123,7 @@ let r = &mut x;
 x += 1;                   // OK
 ```
 
-Reading borrow checker errors: the message is about the owner, described as borrowed. The reference only appears in the labels below it.
+Reading borrow checker errors: the message is about the owner, described as borrowed. The [reference](#reference) only appears in the labels below it.
 
 ```
 error: cannot use `x` because it was mutably borrowed

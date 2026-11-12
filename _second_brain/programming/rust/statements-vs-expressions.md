@@ -32,7 +32,7 @@ let c = if true { 1 } else { 2 };   // if/else, c == 1
 
 #### Tail expression
 
-The last expression in a block, with no `;`, is the block's value. It is called the **tail expression**:
+The last expression in a block, with no `;`, is the block's value. It is called the **[tail expression](#tail-expression)**:
 
 ```rust
 let n = {
@@ -41,7 +41,7 @@ let n = {
 };
 ```
 
-With a `;` the last line becomes a statement, so the block has no tail expression and evaluates to `()`, the unit value:
+With a `;` the last line becomes a statement, so the block has no [tail expression](#tail-expression) and evaluates to `()`, the [unit value](#unit-value):
 
 ```rust
 let x = { 1 + 3 };    // x == 4

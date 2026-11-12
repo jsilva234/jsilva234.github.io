@@ -10,6 +10,6 @@ Pointers work similary to C.
 * `*` for dereference;
 
 Rust changes:
-* `&` references only allow reading (unmutable);
+* `&` [references](#reference) only allow reading (unmutable);
 * `&mut` is required for mutable operations (only if varible is also mutable);
 ```

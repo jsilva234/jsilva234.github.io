@@ -43,7 +43,7 @@ Works on `loop`, `while` and `for`, and they can be mixed.
 }
 ```
 
-Only a labeled `loop` can `break` with a value. `while` and `for` can't, they always evaluate to `()`.
+Only a labeled `loop` can `break` with a value. `while` and `for` can't, they always evaluate to [`()`](#unit-value).
 
 ```rust
 let mut i = 0;
