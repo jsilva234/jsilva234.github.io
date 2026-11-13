@@ -8,6 +8,44 @@ order: 9
 There are 2 kinds of static.  
 `static` variables and static [lifetimes](#lifetime) (`'static`)
 
+### static variables
+
+A single place in memory for the entire run. It is Rust's global variable.  
+Can be declared ouside a function.  
+
+```rust
+static B: i32 = 5;   // needs an explicit type and a value computable at compile time
+
+fn main() {
+    println!("{}", B)
+}
+```
+A `static` can be `mut`, but every access is `unsafe`:
+
+```rust
+static mut COUNT: i32 = 0;
+
+unsafe { COUNT += 1; }
+```
+
+A `static` variable keeps its value between calls:
+
+```rust
+fn count_calls() -> (i32, i32) {
+    static mut CALLS: i32 = 0;   // initialized once, not on every call
+    let mut local = 0;           // a new variable on every call
+    local += 1;
+    unsafe {
+        CALLS += 1;
+        (CALLS, local)
+    }
+}
+
+count_calls();   // (1, 1)
+count_calls();   // (2, 1), CALLS kept its value, local started over
+count_calls();   // (3, 1)
+```
+
 ### `'static`
 
 `'static` is the longest [lifetime](#lifetime): the target lives as long as the program runs, so the [reference](#reference) can't [dangle](#dangling-reference).  
@@ -35,16 +73,29 @@ let r;
 println!("{}", r);         // ok
 ```
 
-### `const` vs `static`
+A reference to a `static` variable is a `&'static`, since the variable lives for the whole run:
 
 ```rust
-const A: i32 = 5;            // inlined at each use, has no address of its own
+static B: i32 = 5;
+let r: &'static i32 = &B;
+```
+```rust
+fn f() -> &'static i32 {
+    static A: i32 = 5;   // the same variable on every call of f
+    &A                   // a reference to it is valid anywhere, so it can be returned
+}
+```
+
+The reverse isn't needed: a `&'static` doesn't have to point at a `static` variable, a string literal is one too.
+
+### `const` vs `static`
+- `const`: works like a placeholder, the compiler just replaces each use with its value. There is no variable at runtime.  
+- `static`: a variable with one fixed address for the entire run.
+
+```rust
+const A: i32 = 5;            // placeholder, each use is replaced by 5
 static B: i32 = 5;           // one fixed memory location for the whole program
 ```
 
-- `const`: a value the compiler pastes in wherever you use it.
-- `static`: a single place in memory for the entire run, so `&B` is a `&'static i32`.
+Both need an explicit type and a value the compiler can compute at compile time.
 
-```rust
-const GREETING: &str = "hi";   // type is &'static str, the lifetime is elided
-```
