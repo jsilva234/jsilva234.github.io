@@ -41,3 +41,40 @@ impl Rect {
     fn is_square(&self) -> bool { self.width == self.height }
 }
 ```
+
+### Tuple struct
+
+Fields by position, not by name:
+
+```rust
+struct Point(i32, i32);
+
+let p = Point(1, 2);
+let x = p.0;                  // access by index
+```
+
+### Unit struct
+
+No fields, takes zero bytes:
+
+```rust
+struct Marker;
+
+let m = Marker;               // no () and no {}
+```
+
+### Unit struct use case
+
+A type with behavior but no data to hold:
+
+```rust
+struct Math;
+
+impl Math {
+    fn double(n: i32) -> i32 {
+        n * 2
+    }
+}
+
+let x = Math::double(4);      // no instance needed
+```
