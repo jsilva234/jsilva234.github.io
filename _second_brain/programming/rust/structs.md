@@ -2,7 +2,7 @@
 title: Structs
 topic: Programming
 subtopic: Rust
-order: 10
+order: 11
 ---
 
 A struct groups named fields:
