@@ -11,7 +11,7 @@ There are 2 kinds of static.
 ### static variables
 
 A single place in memory for the entire run. It is Rust's global variable.  
-Can be declared ouside a function.  
+Can be declared outside a function.  
 
 ```rust
 static B: i32 = 5;   // needs an explicit type and a value computable at compile time
@@ -59,7 +59,7 @@ let r;
     let x = 5;
     r = &x;                // x is dropped at the end of this block
 }
-println!("{}", r);      // error: `x` does not live long enough
+println!("{}", r);        // error: `x` does not live long enough
 ```
 
 A `&'static` reference never dangles, so the same shape compiles:
@@ -70,7 +70,7 @@ let r;
     let s: &'static str = "hello";   // a local holding a reference
     r = s;                           // copies the reference, the bytes live in the program
 }
-println!("{}", r);         // ok
+println!("{}", r);                 // ok
 ```
 
 A reference to a `static` variable is a `&'static`, since the variable lives for the whole run:
@@ -96,6 +96,4 @@ The reverse isn't needed: a `&'static` doesn't have to point at a `static` varia
 const A: i32 = 5;            // placeholder, each use is replaced by 5
 static B: i32 = 5;           // one fixed memory location for the whole program
 ```
-
-Both need an explicit type and a value the compiler can compute at compile time.
 
