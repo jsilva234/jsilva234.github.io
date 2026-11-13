@@ -5,6 +5,10 @@ Notes live in `_second_brain/`. They are a second brain, not a tutorial.
 - Keep notes minimal and terse.
 - Do not add things the author did not name (e.g. extra glossary terms).
 - Ask when placement or wording is ambiguous.
+- Split notes into atomic units of knowledge: each concept stands alone and needs no other details to exist, so units can be mixed and matched.
+- Give each unit its own `###` heading and a self-contained example.
+- Do not fold combinations of concepts (e.g. `impl` on a tuple struct) into a unit's example.
+- Use the bare minimum extra code needed for the example to compile or show its result (e.g. `println!` is fine).
 
 ## Markdown
 
