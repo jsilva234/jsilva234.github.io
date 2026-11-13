@@ -17,6 +17,27 @@ let r = Rect { width: 3, height: 4 };
 println!("{}", r.width);      // field access with .
 ```
 
+Struct update syntax builds a struct from another, overriding some fields:
+
+```rust
+let a = Rect { width: 3, height: 4 };
+let b = Rect { width: 10, ..a };   // height copied from a
+```
+
+Fields that are not `Copy` are moved out of the source:
+
+```rust
+struct User {
+    name: String,
+    age: u32,
+}
+
+let a = User { name: String::from("Ann"), age: 30 };
+let b = User { age: 31, ..a };     // name moved from a
+// println!("{}", a.name);         // error: a.name was moved
+println!("{}", a.age);             // ok: age is Copy, still usable
+```
+
 Behavior lives in an `impl` block, separate from the data:
 
 ```rust
