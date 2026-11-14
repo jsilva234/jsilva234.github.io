@@ -1,5 +1,5 @@
 ---
-title: Tuples and Arrays
+title: Tuples
 topic: Programming
 subtopic: Rust
 order: 13
@@ -26,24 +26,4 @@ let s = (t.0,);               // single element needs trailing comma, (5) is jus
 let n = (t, 3);               // nesting
 let x = n.0.1;                // reach into nested: "hi"
 // (i32, &str) and (i32, &str, i32) are different types: length is part of the type
-```
-
-### Array
-
-Fixed-size group of values, all the same type:
-
-```rust
-let a: [i32; 3] = [1, 2, 3];
-let n = a[0];                 // access by index with []
-```
-
-### Using arrays
-
-```rust
-let mut a = [1, 2, 3];
-a[0] = 5;                     // mutable with let mut
-let z = [0; 5];               // repeat form: five zeros
-let s = &a[1..3];             // slice: [2, 3]
-// a[10] panics at runtime, bounds are checked (C would be undefined behavior)
-// [i32; 3] and [i32; 4] are different types: length is part of the type
 ```
