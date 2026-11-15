@@ -41,6 +41,29 @@ let c = Shape::Square { side: 2.0 };
 let d = Shape::Dot(Point { x: 1.0, y: 2.0 });
 ```
 
+### Discriminant
+
+The integer tied to a variant. `as` casts the enum to it:
+
+```rust
+enum Status {
+    Ok = 200,
+    NotFound = 404,
+}
+
+println!("{}", Status::NotFound as i32);   // 404
+```
+
+Must be an integer, `isize` by default. `#[repr]` picks another integer type:
+
+```rust
+#[repr(u8)]
+enum Byte {
+    A = 1,
+    B = 255,      // must fit in u8
+}
+```
+
 ### `impl` on an enum
 
 Methods work the same as on a struct:
