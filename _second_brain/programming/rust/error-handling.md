@@ -2,7 +2,7 @@
 title: TODO Error Handling
 topic: Programming
 subtopic: Rust
-order: 16
+order: 17
 ---
 
 ### `Option`

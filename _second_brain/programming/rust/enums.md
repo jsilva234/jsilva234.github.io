@@ -2,7 +2,7 @@
 title: Enums
 topic: Programming
 subtopic: Rust
-order: 15
+order: 16
 ---
 
 ### Enum
