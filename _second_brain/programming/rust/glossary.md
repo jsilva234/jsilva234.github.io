@@ -84,3 +84,12 @@ A reference to memory that has already been freed, Rust rejects it at compile ti
 ```rust
 r = &x;   // after `x` is dropped
 ```
+
+### Coercion
+
+Implicit type conversion the compiler applies where a specific type is expected.
+
+```rust
+let arr = [1, 2, 3];
+let s: &[i32] = &arr;    // &[i32; 3] coerced to &[i32]
+```
