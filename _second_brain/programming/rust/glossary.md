@@ -93,3 +93,9 @@ Implicit type conversion the compiler applies where a specific type is expected.
 let arr = [1, 2, 3];
 let s: &[i32] = &arr;    // &[i32; 3] coerced to &[i32]
 ```
+
+### Prelude
+
+Std names imported into every file automatically, no `use` needed.
+
+e.g. `Option`, `Some`, `None`, `Result`, `Ok`, `Err`
