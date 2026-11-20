@@ -16,7 +16,7 @@ let a: Result<i32, String> = Ok(5);
 let b: Result<i32, String> = Err(String::from("failed"));
 ```
 
-EG: An operation that may fail returns `Err` with the reason:
+e.g. An operation that may fail returns `Err` with the reason:
 
 ```rust
 let a = "5".parse::<i32>();   // Ok(5)
@@ -39,6 +39,32 @@ let a = divide(6, 3);         // Ok(2)
 let b = divide(6, 0);         // Err("division by zero")
 ```
 
+### Interaction with `?` operator
+
+Rust has syntax sugar to deal with a `Result`: the `?` operator.  
+It stands after an expression that returns a `Result`.  
+On `Ok(v)` it gives `v`. On `Err(e)` it returns `Err(e)` from the enclosing function.  
+Only works in a function that returns a `Result`.
+
+```rust
+fn half_of_division(a: i32, b: i32) -> Result<i32, String> {
+    let n = divide(a, b)?;
+    Ok(n / 2)
+}
+
+let a = half_of_division(8, 2); // Ok(2)
+let b = half_of_division(8, 0); // Err("division by zero")
+```
+
+### `unwrap`
+
+On `Ok(v)` it gives `v`. On `Err` it panics.
+
+```rust
+let a = divide(6, 3).unwrap(); // 2
+let b = divide(6, 0).unwrap(); // panics: called `Result::unwrap()` on an `Err` value: "division by zero"
+```
+
 ### Unrecoverable error
 
 ```rust
@@ -58,7 +84,7 @@ let a: Option<i32> = Some(5);
 let b: Option<i32> = None;
 ```
 
-Eg: A lookup that may find nothing returns `None` instead of panicking:
+e.g. A lookup that may find nothing returns `None` instead of panicking:
 
 ```rust
 let v = vec![1, 2, 3];
@@ -82,4 +108,28 @@ fn first_even(v: &[i32]) -> Option<i32> {
 
 let a = first_even(&[1, 2, 4]); // Some(2)
 let b = first_even(&[1, 3]);    // None
+```
+
+### Interaction with `?` operator (`Option`)
+
+On `Some(v)` it gives `v`. On `None` it returns `None` from the enclosing function.  
+Only works in a function that returns an `Option`.
+
+```rust
+fn double_first_even(v: &[i32]) -> Option<i32> {
+    let n = first_even(v)?;
+    Some(n * 2)
+}
+
+let a = double_first_even(&[1, 2, 4]); // Some(4)
+let b = double_first_even(&[1, 3]);    // None
+```
+
+### `unwrap` (`Option`)
+
+On `Some(v)` it gives `v`. On `None` it panics.
+
+```rust
+let a = first_even(&[1, 2, 4]).unwrap(); // 2
+let b = first_even(&[1, 3]).unwrap();    // panics: called `Option::unwrap()` on a `None` value
 ```
