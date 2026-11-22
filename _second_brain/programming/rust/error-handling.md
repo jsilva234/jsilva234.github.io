@@ -5,11 +5,10 @@ subtopic: Rust
 order: 17
 ---
 
-
 Rust has no exceptions. Instead, the rust way is to use the `Result<T, E>` enum.  
 This provides a standardized interface to either return a result or an error  
 The Enum has 2 variants: `Ok(T)` or `Err(E)`  
-`Result`, `Ok` and `Err` are part of the [prelude](#prelude). Can be used without import 
+`Result`, `Ok` and `Err` are part of the [prelude](#prelude). Can be used without import.
 
 ```rust
 let a: Result<i32, String> = Ok(5);
@@ -71,13 +70,12 @@ let b = divide(6, 0).unwrap(); // panics: called `Result::unwrap()` on an `Err` 
 panic!("something broke"); // thread 'main' panicked at src/main.rs:2:5: something broke
 ```
 
-
 ### Null/None results 
 
-Rust has no null or None concept. Instead, the rust way is to use the `Option<T>` enum.  
+Rust has no `null` or `None` concept. Instead, the rust way is to use the `Option<T>` enum.  
 This provides a standardized interface to either return a value or a representation of "no value" (`None`)  
 The Enum has 2 variants: `Some(T)` or `None`  
-`Option`, `Some` and `None` are part of the [prelude](#prelude). Can be used without import 
+`Option`, `Some` and `None` are part of the [prelude](#prelude). Can be used without import.
 
 ```rust
 let a: Option<i32> = Some(5);
