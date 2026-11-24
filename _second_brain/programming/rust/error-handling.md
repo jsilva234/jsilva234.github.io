@@ -64,7 +64,7 @@ let a = divide(6, 3).unwrap(); // 2
 let b = divide(6, 0).unwrap(); // panics: called `Result::unwrap()` on an `Err` value: "division by zero"
 ```
 
-Check [`let else`](conditional-structures.md#let-else) for validation of output.
+Check [`let else`](flow-control.md#let-else) for validation of output.
 
 ### Unrecoverable error
 

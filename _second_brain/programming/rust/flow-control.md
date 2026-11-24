@@ -1,5 +1,5 @@
 ---
-title: Conditional Structures
+title: Flow control
 topic: Programming
 subtopic: Rust
 order: 18

@@ -65,4 +65,4 @@ let a = first_even(&[1, 2, 4]).unwrap(); // 2
 let b = first_even(&[1, 3]).unwrap();    // panics: called `Option::unwrap()` on a `None` value
 ```
 
-Check [`let else`](conditional-structures.md#let-else) for validation of output.
+Check [`let else`](flow-control.md#let-else) for validation of output.
