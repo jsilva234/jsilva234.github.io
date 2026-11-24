@@ -93,15 +93,3 @@ let (0, y) = p else {
 };
 println!("on the axis, y = {}", y); // on the axis, y = 7
 ```
-
-### `while let`
-
-Loops as long as the value matches the pattern.
-
-```rust
-let mut v = vec![1, 2, 3];
-
-while let Some(n) = v.pop() {
-    println!("{}", n); // 3, 2, 1
-}
-```
