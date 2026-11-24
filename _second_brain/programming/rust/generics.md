@@ -114,13 +114,16 @@ fn main() {
 
 ### Generic type alias
 
-TODO
-
 ```rust
 fn main() {
-    type Pair<T> = (T, T);
+    type Id = u32;                // names a plain type
+    let a: Id = 1;
 
-    let a: Pair<i32> = (1, 2);
-    let b: Pair<&str> = ("a", "b");
+    type Ints = Vec<i32>;         // names a generic type with its parameter fixed
+    let b: Ints = vec![1, 2];
+
+    type Pair<T> = (T, T);        // the alias is itself generic
+    let c: Pair<i32> = (1, 2);
+    let d: Pair<&str> = ("a", "b");
 }
 ```
