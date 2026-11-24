@@ -2,7 +2,7 @@
 title: Error Handling
 topic: Programming
 subtopic: Rust
-order: 17
+order: 19
 ---
 
 Rust has no exceptions. Instead, the rust way is to use the `Result<T, E>` enum.  

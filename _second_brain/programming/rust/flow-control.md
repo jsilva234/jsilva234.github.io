@@ -2,7 +2,7 @@
 title: Flow control
 topic: Programming
 subtopic: Rust
-order: 18
+order: 17
 ---
 
 ### `if` / `else if` / `else`

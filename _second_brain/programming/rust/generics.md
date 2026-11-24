@@ -2,7 +2,7 @@
 title: Generics
 topic: Programming
 subtopic: Rust
-order: 19
+order: 16
 ---
 
 A type abstraction, replaced by concrete types at compile time.  
