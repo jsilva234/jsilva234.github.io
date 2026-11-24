@@ -66,8 +66,8 @@ Because `&str` stores the `len`, it can point to a slice of a `String`.
 
 ### Type of a literal
 
+The literal's bytes live in the binary's read-only data and are never freed, so the reference is [`'static`](static.md#static).
 ```rust
 let s: &str = "hé";             // elided form
-// TODO: 'static, the literal's bytes live in the binary's read-only data and are never freed
 let s: &'static str = "hé";     // full form
 ```
